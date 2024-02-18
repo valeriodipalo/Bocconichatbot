@@ -1,0 +1,77 @@
+{
+    "name": null,
+    "memory": null,
+    "verbose": false,
+    "tags": null,
+    "metadata": null,
+    "combine_documents_chain": {
+        "name": null,
+        "memory": null,
+        "verbose": false,
+        "tags": null,
+        "metadata": null,
+        "input_key": "input_documents",
+        "output_key": "output_text",
+        "llm_chain": {
+            "name": null,
+            "memory": null,
+            "verbose": false,
+            "tags": null,
+            "metadata": null,
+            "prompt": {
+                "name": null,
+                "input_variables": [
+                    "context",
+                    "question"
+                ],
+                "input_types": {},
+                "output_parser": null,
+                "partial_variables": {},
+                "metadata": null,
+                "tags": null,
+                "template": "\nUse the following pieces of context to answer the question at the end. \nIf you don't know the answer, just say that you don't know, don't try to make up an answer. \nIf you the question is too broad and could lead to multiple answers ask the user for clarifications.\nKeep the answer as concise as possible.\nBe exhaustive if the user is asking for it. \nFor text provided in the format [some text](link) always include the link. \nTry to keep the same the \"text\" when it surrounded by quotation marks.  \nAlways say \"If you need any further information, don't hesitate to ask!\" at the end of the answer. \n{context}\nQuestion: {question}\nHelpful Answer:",
+                "template_format": "f-string",
+                "validate_template": false,
+                "_type": "prompt"
+            },
+            "llm": {
+                "model_name": "gpt-3.5-turbo",
+                "model": "gpt-3.5-turbo",
+                "stream": false,
+                "n": 1,
+                "temperature": 0.0,
+                "_type": "openai-chat"
+            },
+            "output_key": "text",
+            "output_parser": {
+                "name": null,
+                "_type": "default"
+            },
+            "return_final_only": true,
+            "llm_kwargs": {},
+            "_type": "llm_chain"
+        },
+        "document_prompt": {
+            "name": null,
+            "input_variables": [
+                "page_content"
+            ],
+            "input_types": {},
+            "output_parser": null,
+            "partial_variables": {},
+            "metadata": null,
+            "tags": null,
+            "template": "{page_content}",
+            "template_format": "f-string",
+            "validate_template": false,
+            "_type": "prompt"
+        },
+        "document_variable_name": "context",
+        "document_separator": "\n\n",
+        "_type": "stuff_documents_chain"
+    },
+    "input_key": "query",
+    "output_key": "result",
+    "return_source_documents": true,
+    "_type": "retrieval_qa"
+}
