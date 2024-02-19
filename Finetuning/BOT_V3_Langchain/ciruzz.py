@@ -1,51 +1,18 @@
-import bs4
-from langchain import hub
-from langchain.chat_models import ChatOpenAI
-from langchain.document_loaders import WebBaseLoader
-from langchain.embeddings import OpenAIEmbeddings
-from langchain.schema import StrOutputParser
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.vectorstores import Chroma
-from langchain_core.runnables import RunnablePassthrough
-from langchain.document_loaders import UnstructuredMarkdownLoader
+import os
 from langchain.text_splitter import MarkdownHeaderTextSplitter
-from langchain_openai import OpenAIEmbeddings
-from langchain_openai import ChatOpenAI
-from langchain.chains.query_constructor.base import AttributeInfo
-from langchain.chat_models import ChatOpenAI
-from langchain.chains import RetrievalQA
-from langchain.prompts import PromptTemplate
-from langchain_core.prompts import PromptTemplate
-from langchain_community.llms import OpenAI
-import os
-import textwrap
-from getpass import getpass
-from pathlib import Path
-import chromadb
-import langchain
-import openai
-from langchain.chains import ConversationChain
-from langchain.chat_models import ChatOpenAI
-from langchain.docstore import InMemoryDocstore
 from langchain.embeddings.openai import OpenAIEmbeddings
-from langchain_openai import OpenAIEmbeddings
+from langchain.chat_models import ChatOpenAI
 from langchain.prompts.prompt import PromptTemplate
+from langchain.chains import RetrievalQA
 from langchain.vectorstores import Chroma
-import langchain
-import trulens_eval
-import openai
-import os
 
-os.environ["OPENAI_API_KEY"] = "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"
+
+os.environ["OPENAI_API_KEY"] = "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"
 os.environ["LANGCHAIN_API_KEY"] = "ls__a7cd2e593e7248e594ac5b698bae1f7c"
 os.environ["LANGCHAIN_TRACING_V2"] = "true"
 os.environ["LANGCHAIN_ENDPOINT"] = "https://api.smith.langchain.com"
 os.environ["LANGCHAIN_PROJECT"] ="Bocconi-chat"
-
-
 path_full_p = "S3_files/Full_plain.md"
-
-
 headers_to_split_on_plain = [
     ("#", "Category"),
     ("##", "Subcategory"),
@@ -97,3 +64,4 @@ rqa_basic_full_plain = RetrievalQA.from_chain_type(
 )
 
 print(rqa_basic_full_plain.invoke('Who are the resident representatives?'))
+
